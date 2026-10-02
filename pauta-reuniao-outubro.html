@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pauta da reunião | Outubro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F6F5; --surface:#FFFFFF; --ink:#16212E; --muted:#5A6573;
+    --navy:#132A45; --green:#178A4C; --green-soft:#E3F3EA;
+    --amber:#B86E00; --amber-soft:#FFF2DC; --line:#D9E0DE;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0F1720; --surface:#17222E; --ink:#E7EDF2; --muted:#9AA7B4;
+      --navy:#0A1726; --green:#3CC47A; --green-soft:#16362A;
+      --amber:#F2B04A; --amber-soft:#3A2C12; --line:#27384A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F1720; --surface:#17222E; --ink:#E7EDF2; --muted:#9AA7B4;
+    --navy:#0A1726; --green:#3CC47A; --green-soft:#16362A;
+    --amber:#F2B04A; --amber-soft:#3A2C12; --line:#27384A;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:1.0625rem;line-height:1.55}
+  h1,h2,h3,.num{font-family:"Archivo","Arial Narrow",system-ui,sans-serif}
+  .wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+
+  /* Topo */
+  header{background:var(--navy);color:#fff;padding:2.5rem 0 7rem}
+  .meta{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;color:#B9C7D6;font-size:.95rem}
+  .meta label{display:flex;align-items:center;gap:.5rem}
+  .meta input{background:transparent;border:0;border-bottom:1px solid #4A6380;color:#fff;
+    font:inherit;padding:.15rem .25rem;min-width:9rem}
+  .meta input:focus{outline:2px solid var(--green);outline-offset:2px}
+  header h1{font-size:clamp(2rem,5vw,3.25rem);font-stretch:85%;font-weight:800;
+    line-height:1.05;margin:1.25rem 0 .5rem;letter-spacing:-.01em}
+  header p{margin:0;color:#D3DDE7;max-width:38rem}
+
+  /* Metas da unidade */
+  .goals{margin-top:-5rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem}
+  .goal{background:var(--surface);border-radius:14px;padding:1.5rem;border:1px solid var(--line)}
+  .goal.main{background:var(--green);color:#fff;border-color:transparent}
+  .goal .num{font-size:clamp(2.75rem,8vw,5.5rem);font-weight:800;font-stretch:75%;line-height:.9;display:block}
+  .goal.main .num{font-size:clamp(4rem,12vw,8rem)}
+  .goal .what{font-weight:700;font-size:1.1rem;margin-top:.5rem;display:block}
+  .goal .hint{color:var(--muted);font-size:.95rem}
+  .goal.main .hint{color:#DDF5E7}
+
+  /* Pauta */
+  main{padding:2.5rem 0 3rem}
+  .item{display:grid;grid-template-columns:3.5rem 1fr;gap:1rem;padding:2rem 0;border-top:1px solid var(--line)}
+  .item:first-of-type{border-top:0}
+  .idx{font-family:"Archivo",sans-serif;font-weight:800;font-size:2rem;color:var(--green);line-height:1}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+  h2{margin:0;font-size:1.6rem;font-stretch:90%;line-height:1.15}
+  .item p{margin:.5rem 0 0;max-width:42rem;color:var(--muted)}
+  .done{display:flex;align-items:center;gap:.5rem;font-size:.95rem;color:var(--muted);cursor:pointer;user-select:none}
+  .done input{width:1.15rem;height:1.15rem;accent-color:var(--green)}
+  .item.is-done h2{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px}
+
+  /* Fluxo de qualidade */
+  .flow{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;padding:0;list-style:none;counter-reset:f}
+  .flow li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5rem 1rem;font-weight:600}
+  .flow li:not(:last-child)::after{content:"";display:inline-block;width:.45rem;height:.45rem;
+    border-top:2px solid var(--green);border-right:2px solid var(--green);transform:rotate(45deg);margin-left:.75rem;vertical-align:middle}
+  .rule{margin-top:1.25rem;background:var(--amber-soft);border-left:4px solid var(--amber);
+    padding:1rem 1.25rem;border-radius:0 10px 10px 0;max-width:42rem}
+  .rule strong{color:var(--amber)}
+
+  /* Critérios de premiação */
+  .criteria{margin-top:1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .criteria table{width:100%;border-collapse:collapse}
+  .criteria th,.criteria td{text-align:left;padding:.9rem 1.25rem;border-top:1px solid var(--line)}
+  .criteria thead th{border-top:0;background:var(--green-soft);font-size:.95rem;color:var(--ink)}
+  .criteria td.val{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.25rem;white-space:nowrap}
+  .tag{display:inline-block;background:var(--amber-soft);color:var(--amber);font-weight:700;
+    font-size:.8rem;padding:.15rem .55rem;border-radius:6px;margin-left:.5rem;vertical-align:middle}
+  .note{margin:.75rem 0 0;font-size:.95rem;color:var(--muted)}
+
+  /* Rotina */
+  .routine{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.25rem}
+  .routine div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.25rem}
+  .routine h3{margin:0 0 .25rem;font-size:1.1rem}
+  .routine p{margin:0;font-size:.98rem}
+
+  textarea{width:100%;min-height:7rem;margin-top:1rem;background:var(--surface);color:var(--ink);
+    border:1px solid var(--line);border-radius:12px;padding:1rem;font:inherit;resize:vertical}
+  textarea:focus{outline:2px solid var(--green);outline-offset:2px}
+
+  details.private{margin-top:1.25rem;max-width:42rem;border:1px dashed var(--line);border-radius:12px;background:var(--surface)}
+  details.private summary{cursor:pointer;padding:.75rem 1.1rem;color:var(--muted);font-size:.95rem;font-weight:600;list-style:none}
+  details.private summary::-webkit-details-marker{display:none}
+  details.private summary::before{content:"+";display:inline-block;width:1.1rem;color:var(--green);font-weight:800}
+  details.private[open] summary::before{content:"\2212"}
+  details.private summary:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:10px}
+  details.private .body{padding:0 1.25rem 1.25rem}
+  details.private h3{margin:.25rem 0 .5rem;font-size:1.15rem}
+  details.private p{margin:.5rem 0 0;color:var(--ink)}
+  details.private ul{margin:.75rem 0 0;padding-left:1.2rem}
+  details.private li{margin:.35rem 0}
+  @media print{details.private{display:none}}
+
+  .item.is-hidden{display:none}
+  .item.reveal{animation:reveal .45s ease-out}
+  @keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.item.reveal{animation:none}}
+  .show-all{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:.7rem 1.2rem;font:inherit;cursor:pointer}
+  .show-all:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  @media print{.item.is-hidden{display:grid !important}.show-all{display:none}}
+
+  footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.95rem}
+  .print{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;font:inherit;font-weight:600;cursor:pointer}
+  .print:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  @media (max-width:760px){
+    .goals{grid-template-columns:1fr 1fr}
+    .goal.main{grid-column:1/-1}
+    .routine{grid-template-columns:1fr}
+    .item{grid-template-columns:1fr;gap:.5rem}
+  }
+  @media print{
+    header{padding-bottom:2rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .goals{margin-top:1rem}
+    .goal.main,.criteria thead th,.rule{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .done,.print{display:none}
+    .item{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="meta">
+      <label>Data <input type="text" value="02/10/2026" aria-label="Data da reunião"></label>
+      <label>Horário <input type="text" value="9h00" aria-label="Horário da reunião"></label>
+      <label>Condução <input type="text" value="Rodolfo Malta" aria-label="Quem conduz a reunião"></label>
+    </div>
+    <h1>Reunião de alinhamento<br>Metas de outubro</h1>
+    <p>Metas da unidade, qualidade da venda, pré-venda, critérios individuais de premiação, rotina e clima de trabalho.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="goals" aria-label="Metas da unidade em outubro">
+    <div class="goal main">
+      <span class="num">800</span>
+      <span class="what">vendas no mês</span>
+      <span class="hint">Meta da unidade para outubro</span>
+    </div>
+    <div class="goal">
+      <span class="num">45</span>
+      <span class="what">Refuturiza</span>
+      <span class="hint">Entregas no mês</span>
+    </div>
+    <div class="goal">
+      <span class="num">30</span>
+      <span class="what">TIM Controle</span>
+      <span class="hint">Plano exclusivo para clientes Cartão de TODOS</span>
+    </div>
+  </section>
+</div>
+
+<main class="wrap">
+
+  <article class="item">
+    <span class="idx">1</span>
+    <div>
+      <div class="head">
+        <h2>Metas da unidade</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>800 vendas, 45 Refuturiza e 30 TIM Controle em outubro. Essas metas precisam ser atingidas, e cada pessoa do time tem participação direta nesse número.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">2</span>
+    <div>
+      <div class="head">
+        <h2>Metas individuais</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>Cada colaborador tem sua meta definida e ela precisa ser cumprida. Acompanhamento da quinzena e do mês, com foco no que falta para cada um chegar lá.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">3</span>
+    <div>
+      <div class="head">
+        <h2>Venda com qualidade</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>Vender é só o começo. A venda só está completa quando passa por todas as etapas:</p>
+      <ol class="flow">
+        <li>Venda</li>
+        <li>Pós-venda</li>
+        <li>Qualidade cadastral</li>
+        <li>Venda contabilizada</li>
+      </ol>
+      <div class="rule"><strong>Regra:</strong> venda contabilizada é venda com KYC. Venda sem KYC não entra na contagem.</div>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">4</span>
+    <div>
+      <div class="head">
+        <h2>Tolerância zero com erros na pré-venda</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>Toda venda passa pelo KYC: reconhecimento facial, assinatura do contrato e envio de documentos. Quando o cliente não consegue concluir o link, a ligação de pré-venda é feita com o script pronto. O processo é claro e todos têm acesso a ele.</p>
+      <div class="rule"><strong>A partir de agora:</strong> erros na pré-venda não serão mais aceitos, assim como justificativas do tipo "não sei fazer" ou "o celular não gravou". Cada ocorrência será tratada com penalização, e o colaborador responderá pelas consequências.</div>
+      <p class="note">Ficou alguma dúvida sobre o KYC ou o script de pré-venda? O momento de tirar é agora, antes da próxima venda.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">5</span>
+    <div>
+      <div class="head">
+        <h2>Critérios para receber a premiação</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>A partir desta quinzena, além de bater a meta de vendas, cada colaborador precisa cumprir todos os itens abaixo para ter direito à premiação.</p>
+      <div class="criteria">
+        <table>
+          <thead><tr><th scope="col">Por colaborador, por quinzena</th><th scope="col">Mínimo</th></tr></thead>
+          <tbody>
+            <tr><td>Refuturiza vendidos</td><td class="val">3</td></tr>
+            <tr><td>Planos TIM Controle vendidos <span class="tag">Novo</span></td><td class="val">2</td></tr>
+            <tr><td>PL ativa</td><td class="val">50%</td></tr>
+            <tr><td>App baixado</td><td class="val">75%</td></tr>
+            <tr><td>Cashback gerado</td><td class="val">R$ 5,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Os critérios são cumulativos: deixar de cumprir um deles compromete a premiação da quinzena.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">6</span>
+    <div>
+      <div class="head">
+        <h2>Postura e rotina de trabalho</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <div class="routine">
+        <div><h3>Horário de chegada</h3><p>Pontualidade na entrada e no início das atividades.</p></div>
+        <div><h3>Compromisso e organização</h3><p>Cuidado com o ambiente de trabalho e com os combinados do time.</p></div>
+        <div><h3>Café de 15 minutos</h3><p>Uma pausa diária, pela manhã ou à tarde.</p></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">7</span>
+    <div>
+      <div class="head">
+        <h2>Clima organizacional é responsabilidade de todos</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>Um bom ambiente não depende só da gestão. Cada pessoa do time contribui, todos os dias, para o clima em que trabalhamos.</p>
+      <div class="routine">
+        <div><h3>Sem comentários negativos</h3><p>Críticas e reclamações pelos corredores desgastam o time. Se algo incomoda, o caminho é conversar com a gestão.</p></div>
+        <div><h3>Sem comparações entre colegas</h3><p>Cada um tem sua trajetória e suas metas. Comparar gera atrito e não ajuda ninguém a vender mais.</p></div>
+        <div><h3>Foco no que nos traz aqui</h3><p>Questões pessoais de um não devem pesar sobre o outro. Estamos aqui para trabalhar, fazer acontecer e ser recompensados pelo nosso esforço.</p></div>
+      </div>
+      <details class="private">
+        <summary>Nota do gestor</summary>
+        <div class="body">
+          <h3>Leva e traz e respeito à coordenação</h3>
+          <p>Antes de seguir, quero falar sobre uma situação recente. Pelo relato que chegou até mim, uma informação sobre algo que aconteceu no setor interno chegou, em questão de minutos, a quem nem estava lá. Na sequência, a coordenação foi questionada de uma forma que não condiz com o respeito que esperamos aqui dentro.</p>
+          <p>Não vou citar nomes. O que for individual será tratado individualmente. O recado é para todos:</p>
+          <ul>
+            <li>Informação que não é sua não precisa ser repassada.</li>
+            <li>Quando um colega se oferece para ajudar o time, isso soma. Não é motivo de disputa.</li>
+            <li>Dúvida ou discordância com a coordenação se resolve de forma direta, reservada e com respeito.</li>
+          </ul>
+          <p>Leva e traz enfraquece o time e cria conflito onde não precisava existir.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="item">
+    <span class="idx">8</span>
+    <div>
+      <div class="head">
+        <h2>Dúvidas e combinados</h2>
+        <label class="done"><input type="checkbox"> Apresentado</label>
+      </div>
+      <p>Espaço para registrar perguntas do time e o que ficou acordado na reunião.</p>
+      <textarea aria-label="Anotações da reunião" placeholder="Anote aqui os combinados, responsáveis e prazos."></textarea>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+    <span>Cartão de TODOS | Unidade Campo Grande MS</span>
+    <span style="display:flex;gap:.5rem;flex-wrap:wrap"><button class="show-all" type="button">Mostrar todos os tópicos</button><button class="print" onclick="window.print()">Imprimir ou salvar em PDF</button></span>
+  </div>
+</footer>
+
+<script>
+  const items=[...document.querySelectorAll('main .item')];
+  const smooth=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  items.forEach((it,i)=>{ if(i>0) it.classList.add('is-hidden'); });
+
+  items.forEach((it,i)=>{
+    const cb=it.querySelector('.done input');
+    cb.addEventListener('change',()=>{
+      it.classList.toggle('is-done',cb.checked);
+      const next=items[i+1];
+      if(cb.checked && next && next.classList.contains('is-hidden')){
+        next.classList.remove('is-hidden');
+        next.classList.add('reveal');
+        setTimeout(()=>next.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'}),60);
+      }
+    });
+  });
+
+  document.querySelector('.show-all').addEventListener('click',()=>{
+    items.forEach(it=>it.classList.remove('is-hidden'));
+  });
+</script>
+</body>
+</html>
